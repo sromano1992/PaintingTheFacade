@@ -124,8 +124,10 @@ public class PaintingFacade {
 			int c = tmp.getCol() + ((tmp.getSize()-1)/2);
 			instructionsList += "PAINT_SQUARE " + r + " " + c + " " + ((tmp.getSize()-1)/2) + "\n";
 			for (Hole h : tmp.getHoles()){
-				instructionNum++;
-				instructionsList += "ERASE_CELL " + h.getX() + " " + h.getY() + "\n";
+				if (image[h.getX()][h.getY()]==PIXEL_OFF){
+					instructionNum++;
+					instructionsList += "ERASE_CELL " + h.getX() + " " + h.getY() + "\n";
+				}
 			}
 		}
 		//lines
@@ -186,7 +188,7 @@ public class PaintingFacade {
 	}
 
 	private void saveCurrentImage(int cURRENT_IMAGE) {
-		PrintWriter writer;
+		/*PrintWriter writer;
 		try {
 			writer = new PrintWriter("Res_tmp_" + cURRENT_IMAGE + ".txt", "UTF-8");
 			writer.println(printImage(imageTemp));
@@ -197,7 +199,7 @@ public class PaintingFacade {
 		} catch (UnsupportedEncodingException e) {
 			log.severe("UnsupportedEncodingException: " + e.getMessage());
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 
